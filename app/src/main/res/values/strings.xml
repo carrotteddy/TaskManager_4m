@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TaskManager_4m</string>
     <string name="title_home">Home</string>
+    <string name="title_on_boarding">OnBoarding</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -9,4 +10,5 @@
     <string name="title">Title</string>
     <string name="description">description</string>
     <string name="save">Save</string>
+    <string name="get_started">Get Started</string>
 </resources>

@@ -19,6 +19,7 @@ class TaskAdapter : Adapter<TaskAdapter.TaskViewHolder>() {
         list.add(0, data)
         notifyDataSetChanged()
     }
+
     override fun getItemViewType(position: Int): Int {
         return if (position % 2 == 0) {
             viewTypeWhite
