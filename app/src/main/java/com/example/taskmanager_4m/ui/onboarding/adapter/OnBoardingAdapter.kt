@@ -2,13 +2,16 @@ package com.example.taskmanager_4m.ui.onboarding.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.taskmanager_4m.databinding.ItemOnboardingBinding
 import com.example.taskmanager_4m.model.OnBoarding
 import java.util.zip.Inflater
 
-class OnBoardingAdapter : Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
+class OnBoardingAdapter(private val onClick: () -> Unit) :
+    Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
+
     val data = arrayListOf(
         OnBoarding("", "title 1", "desc 1"),
         OnBoarding("", "title 2", "desc 2"),
@@ -16,7 +19,13 @@ class OnBoardingAdapter : Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
-        return OnBoardingViewHolder(ItemOnboardingBinding.inflate(LayoutInflater.from(parent.context),parent, false))
+        return OnBoardingViewHolder(
+            ItemOnboardingBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -31,11 +40,14 @@ class OnBoardingAdapter : Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
     inner class OnBoardingViewHolder(private val binding: ItemOnboardingBinding) :
         ViewHolder(binding.root) {
-
         fun bind(onBoarding: OnBoarding) {
             binding.tvTitle.text = onBoarding.title
             binding.tvDesc.text = onBoarding.desc
 
+            binding.btnStart.isVisible = adapterPosition == data.lastIndex
+            binding.btnStart.setOnClickListener {
+                onClick()
+            }
         }
     }
 
