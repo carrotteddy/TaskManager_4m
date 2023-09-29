@@ -1,5 +1,6 @@
 package com.example.taskmanager_4m.ui.home.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class TaskAdapter : Adapter<TaskAdapter.TaskViewHolder>() {
     private val viewTypeWhite = 1
     private val viewTypeBlack = 2
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: Task) {
         list.add(0, data)
         notifyDataSetChanged()

@@ -4,8 +4,7 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
+
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-            navController.navigate(R.id.navigation_on_boarding)
+        navController.navigate(R.id.navigation_on_boarding)
 
 
         val appBarConfiguration = AppBarConfiguration(
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             if (destination.id == R.id.navigation_on_boarding) {
                 navView.isVisible = false
                 supportActionBar?.hide()
-            }else{
+            } else {
                 navView.isVisible = true
             }
         }
