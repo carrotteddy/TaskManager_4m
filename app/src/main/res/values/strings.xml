@@ -11,4 +11,6 @@
     <string name="description">description</string>
     <string name="save">Save</string>
     <string name="get_started">Get Started</string>
+    <string name="skip">skip</string>
+    <string name="empty">Поля не могут быть пустыми</string>
 </resources>

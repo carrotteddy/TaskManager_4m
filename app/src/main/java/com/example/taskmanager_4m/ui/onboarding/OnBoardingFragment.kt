@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.navigateUp
-import com.example.taskmanager_4m.R
 import com.example.taskmanager_4m.databinding.FragmentOnBoardingBinding
 import com.example.taskmanager_4m.ui.onboarding.adapter.OnBoardingAdapter
 
@@ -28,6 +26,7 @@ class OnBoardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = adapter
+        binding.indicator.setViewPager(binding.viewPager)
     }
 
     private fun  onClick(){

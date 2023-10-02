@@ -36,10 +36,9 @@ class TaskFragment : Fragment() {
                 setFragmentResult(RESULT_KEY, bundleOf(TASK_KEY to data))
                 findNavController().navigateUp()
             }else{
-                binding.etTitle.error = "Поля не могут быть пустыми"
-                binding.etDesc.error = "Поля не могут быть пустыми"
+                binding.etTitle.error = getString(R.string.empty)
+                binding.etDesc.error = getString(R.string.empty)
             }
-
 
         }
     }
