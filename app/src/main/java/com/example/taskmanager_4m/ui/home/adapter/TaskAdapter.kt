@@ -1,11 +1,14 @@
 package com.example.taskmanager_4m.ui.home.adapter
 
-import android.annotation.SuppressLint
+
+import android.app.AlertDialog
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.taskmanager_4m.App
+import com.example.taskmanager_4m.R
 import com.example.taskmanager_4m.databinding.ItemTaskBinding
 import com.example.taskmanager_4m.model.Task
 
@@ -16,9 +19,9 @@ class TaskAdapter : Adapter<TaskAdapter.TaskViewHolder>() {
     private val viewTypeWhite = 1
     private val viewTypeBlack = 2
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(data: Task) {
-        list.add(0, data)
+    fun addData(newList: List<Task>) {
+        list.clear()
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 
@@ -36,6 +39,7 @@ class TaskAdapter : Adapter<TaskAdapter.TaskViewHolder>() {
         fun bind(task: Task) {
             binding.tvTitle.text = task.title
             binding.tvDesc.text = task.desc
+
             if (itemViewType == viewTypeWhite) {
                 itemView.setBackgroundColor(Color.WHITE)
                 binding.tvTitle.setTextColor(Color.BLACK)
@@ -44,6 +48,25 @@ class TaskAdapter : Adapter<TaskAdapter.TaskViewHolder>() {
                 itemView.setBackgroundColor(Color.BLACK)
                 binding.tvDesc.setTextColor(Color.WHITE)
                 binding.tvTitle.setTextColor(Color.WHITE)
+            }
+            binding.root.setOnLongClickListener {
+                val alertDialogBuilder = AlertDialog.Builder(itemView.context)
+
+                alertDialogBuilder.setTitle(R.string.deleteTask)
+                alertDialogBuilder.setMessage(R.string.areYouSure)
+
+                alertDialogBuilder.setPositiveButton(R.string.yes) { _, _ ->
+                    App.db.taskDao().delete(task)
+                    list.remove(task)
+                    notifyDataSetChanged()
+
+                }
+                alertDialogBuilder.setNegativeButton(R.string.no) { _, _ ->
+
+                }
+                val alertDialog = alertDialogBuilder.create()
+                alertDialog.show()
+                true
             }
         }
     }

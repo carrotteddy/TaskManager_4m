@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.taskmanager_4m.App
 import com.example.taskmanager_4m.R
 import com.example.taskmanager_4m.databinding.FragmentHomeBinding
 import com.example.taskmanager_4m.model.Task
@@ -34,10 +35,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvTasks.adapter = adapter
-        setFragmentResultListener(TaskFragment.RESULT_KEY){ requestKey, bundle ->
-            val data = bundle.getSerializable(TaskFragment.TASK_KEY) as Task
-            adapter.setData(data)
-        }
+        val data = App.db.taskDao().getAll()
+        adapter.addData(data)
 
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)

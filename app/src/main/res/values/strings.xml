@@ -13,4 +13,9 @@
     <string name="get_started">Get Started</string>
     <string name="skip">skip</string>
     <string name="empty">Поля не могут быть пустыми</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="areYouSure">Вы уверены, что хотите удалить эту задачу?</string>
+    <string name="deleteTask">Удаление задачи</string>
+    <string name="name">Имя</string>
 </resources>
