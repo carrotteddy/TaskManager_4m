@@ -34,7 +34,7 @@ class OnBoardingFragment : Fragment() {
         binding.indicator.setViewPager(binding.viewPager)
     }
 
-    private fun  onClick(){
+    private fun onClick() {
         pref.userShowed()
         findNavController().navigateUp()
     }

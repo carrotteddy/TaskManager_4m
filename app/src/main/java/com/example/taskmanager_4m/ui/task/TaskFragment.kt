@@ -16,7 +16,7 @@ import com.example.taskmanager_4m.model.Task
 
 class TaskFragment : Fragment() {
 
-   private lateinit var binding: FragmentTaskBinding
+    private lateinit var binding: FragmentTaskBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,23 +30,24 @@ class TaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSave.setOnClickListener {
-            if(!binding.etTitle.text.isNullOrEmpty() && !binding.etDesc.text.isNullOrEmpty()) {
+            if (!binding.etTitle.text.isNullOrEmpty() && !binding.etDesc.text.isNullOrEmpty()) {
                 val data = Task(
                     title = binding.etTitle.text.toString(),
                     desc = binding.etDesc.text.toString()
                 )
                 App.db.taskDao().insert(data)
                 findNavController().navigateUp()
-            }else{
+            } else {
                 binding.etTitle.error = getString(R.string.empty)
                 binding.etDesc.error = getString(R.string.empty)
             }
 
         }
     }
-    companion object{
-        const val  RESULT_KEY = "result.key"
-        const val  TASK_KEY = "task.key"
+
+    companion object {
+        const val RESULT_KEY = "result.key"
+        const val TASK_KEY = "task.key"
     }
 
 }
