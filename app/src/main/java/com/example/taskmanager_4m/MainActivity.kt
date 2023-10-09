@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.taskmanager_4m.data.local.Pref
 import com.example.taskmanager_4m.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         if (!pref.isUserShow())
             navController.navigate(R.id.navigation_on_boarding)
+        if(FirebaseAuth.getInstance().currentUser?.uid == null) navController.navigate(R.id.navigation_phone_fragment)
 
 
         val appBarConfiguration = AppBarConfiguration(
@@ -41,7 +43,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_on_boarding) {
+            if (destination.id == R.id.navigation_on_boarding ||
+                (destination.id == R.id.navigation_phone_fragment||destination.id == R.id.navigation_code_fragment)  ) {
                 navView.isVisible = false
                 supportActionBar?.hide()
             } else {

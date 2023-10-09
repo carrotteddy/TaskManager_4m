@@ -18,4 +18,8 @@
     <string name="areYouSure">Вы уверены, что хотите удалить эту задачу?</string>
     <string name="deleteTask">Удаление задачи</string>
     <string name="name">Имя</string>
+    <string name="phone">Phone</string>
+    <string name="send">send</string>
+    <string name="code">Code</string>
+    <string name="accept">accept</string>
 </resources>
